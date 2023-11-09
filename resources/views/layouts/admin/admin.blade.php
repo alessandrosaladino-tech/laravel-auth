@@ -16,13 +16,13 @@
 </head>
 
 <body>
-    @include('partials.admin.header')
+    @include('profile.partials.admin.header')
 
     <main>
         @yield('content')
     </main>
     
-    @include('partials.footer')
+    @include('profile.partials.footer')
 </body>
 
 </html>

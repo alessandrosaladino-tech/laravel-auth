@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Project;
+use Illuminate\Support\Str;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -26,6 +27,7 @@ class ProjectSeeder extends Seeder
         foreach ($projects as $project) {
             $new_project = new Project();
             $new_project->title = $project['title'];
+            $new_project->slug = Str::slug($new_project->title, '-');
             $new_project->description = $project['description'];
             $new_project->thumb = $project['thumb'];
             $new_project->release_date = $project['release_date'];

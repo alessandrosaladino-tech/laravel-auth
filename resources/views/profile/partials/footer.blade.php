@@ -4,7 +4,7 @@
             <div class="row row-cols-1 row-cols-md-3 py-3">
                 <div class="col text-center">
                     <ul class="list-unstyled">
-                        <li><h3><a href="{{route('about')}}" class="text-decoration-none text-white">About</a></h3></li>
+                        <li><h3><a href="#" class="text-decoration-none text-white">About</a></h3></li>
                         <li><h5><a href="#" class="text-decoration-none text-white">Lorem</a></h5></li>
                         <li><h5><a href="#" class="text-decoration-none text-white">Lorem</a></h5></li>
                         <li><h5><a href="#" class="text-decoration-none text-white">Lorem</a></h5></li>
