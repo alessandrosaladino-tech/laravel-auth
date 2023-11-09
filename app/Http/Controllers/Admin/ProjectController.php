@@ -45,7 +45,7 @@ class ProjectController extends Controller
 
         $newProject = Project::create($valData);
 
-        return to_route('admin.projects.index')->with('status', 'Well Done, New Entry Added Succeffully');
+        return to_route('admin.projects.index')->with('status', 'Post created succesfully!');
     }
 
     /**
@@ -77,7 +77,7 @@ class ProjectController extends Controller
             $newThumb = $request->thumb;
             $path = Storage::put('thumbs', $newThumb);
 
-            // SE IL FUMETTO HA GIA' UNA COVER NEL DB  NEL FILE SYSTEM, DEVE ESSERE ELIMINATA DATO CHE LA STIAMO SOSTITUENDO
+            // SE IL FUMETTO HA GIA' UNA THUMB NEL DB , DEVE ESSERE ELIMINATA DATO CHE LA STIAMO SOSTITUENDO
             if (!isNull($project->thumb) && Storage::fileExists($project->thumb)) {
                 // ELIMINA LA VECCHIA PREVIEW
                 Storage::delete($project->thumb);
@@ -96,8 +96,34 @@ class ProjectController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Project $project)
-    {
-        //
+        public function destroy(Project $project)
+        {
+            if (!is_null($project->exif_thumbnail)) {
+                Storage::delete($project->thumb);
+            }
+            $project->delete();
+    
+            return to_route('admin.projects.index')->with('message', 'Welldone! Project deleted successfully');
+        }
+    
+        public function trashed()
+        {
+            return view('admin.projects.trash', ['trashedProjects' => Project::onlyTrashed()->orderByDesc('id')->paginate(7)]);
+        }
+    
+        public function restoreTrash($slug)
+        {
+            $project = Project::withTrashed()->where('slug', '=', $slug)->first();
+            $project->restore();
+            return to_route('admin.trash')->with('message', 'Well Done! Project restored successfully!');
+        }
+    
+        public function forceDestroy($slug)
+        {
+            $project = Project::withTrashed()->where('slug', '=', $slug)->first();
+    
+            $project->forceDelete();
+    
+            return to_route('admin.trash')->with('message', 'Well Done! Project deleted successfully!');
+        }
     }
-}

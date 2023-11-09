@@ -27,12 +27,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware('auth', 'verified') 
-    ->name('admin.')
-    ->prefix('admin')
-    ->group(function () {
-        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-        Route::resource('projects', ProjectController::class )->parameters(['projects' => 'project:slug']);
-    });
+
+Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () 
+{
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::resource('projects', ProjectController::class)->parameters([
+        'projects' => 'project:slug'
+    ]);
+
+    Route::get('/admin/project/trash', [ProjectController::class, 'trash_projects'])->name('trash');
+    Route::put('/admin/trash/{project}/restore', [ProjectController::class, 'restore'])->name('restore');
+    Route::delete('/admin/trash/{project}/destroy', [ProjectController::class, 'forceDelete'])->name('forceDelete');
+});
 
 require __DIR__.'/auth.php';

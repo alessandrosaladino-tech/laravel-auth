@@ -1,8 +1,7 @@
-@extends('layouts.admin.admin')
+@extends('layouts.admin')
 
 @section('content')
     <div class="container">
-        <h1>ADMIN/PROJECTS/EDIT.BLADE</h1>
         <h2 class="fs-4 text-secondary my-4">
             {{ __('Project Edit Page for') }} {{ Auth::user()->name }}.
         </h2>
