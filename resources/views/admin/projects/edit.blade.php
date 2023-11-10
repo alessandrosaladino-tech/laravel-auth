@@ -61,7 +61,7 @@
                         <input type="text" class="form-control" name="type" id="type"
                             aria-describedby="helpType" value="{{ old('type') ? old('type') : $project->type }}">
 
-                        @error('tech')
+                        @error('type')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
