@@ -17,9 +17,9 @@
 
 
         <div class="table-responsive">
-            <table class="table table-bordered">
+            <table class="table table-bordered table-striped">
                 <thead class="table-group-divider text-center">
-                        <tr class="table-light">
+                        <tr class="table-danger">
                             <th scope="col">ID</th>
                             <th scope="col">Preview</th>
                             <th scope="col">Title</th>
@@ -30,7 +30,7 @@
                 </thead>
                 <tbody class="text-center">
                         @forelse ($projects as $project)
-                            <tr class="table-light">
+                            <tr class="table-secondary">
                                 <td class="align-middle" scope="row">{{ $project->id }}</td>
 
                                 @if (str_contains($project->thumb, 'http'))

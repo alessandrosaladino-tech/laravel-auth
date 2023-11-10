@@ -46,7 +46,7 @@
                         <label for="description" class="form-label"><strong>Description</strong></label>
 
                         <input type="text" class="form-control" name="description" id="description"
-                            aria-describedby="helpTitle"
+                            aria-describedby="helpDescription"
                             value="{{ old('description') ? old('description') : $project->description }}">
 
                         @error('description')
@@ -56,10 +56,10 @@
 
                     <div class="mb-3">
 
-                        <label for="tech" class="form-label"><strong>Technologies Used</strong></label>
+                        <label for="type" class="form-label"><strong>Technologies Used</strong></label>
 
-                        <input type="text" class="form-control" name="tech" id="tech"
-                            aria-describedby="helpTitle" value="{{ old('type') ? old('type') : $project->type }}">
+                        <input type="text" class="form-control" name="type" id="type"
+                            aria-describedby="helpType" value="{{ old('type') ? old('type') : $project->type }}">
 
                         @error('tech')
                             <div class="text-danger">{{ $message }}</div>
@@ -70,8 +70,8 @@
 
                         <label for="tech" class="form-label"><strong>GitHub Link</strong></label>
 
-                        <input type="text" class="form-control" name="tech" id="tech"
-                            aria-describedby="helpTitle" value="{{ old('github_link') ? old('github_link') : $project->github_link }}">
+                        <input type="text" class="form-control" name="github_link" id="github_link"
+                            aria-describedby="helpGitLink" value="{{ old('github_link') ? old('github_link') : $project->github_link }}">
 
                         @error('tech')
                             <div class="text-danger">{{ $message }}</div>
@@ -82,8 +82,8 @@
 
                         <label for="tech" class="form-label"><strong>Published Project Link</strong></label>
 
-                        <input type="text" class="form-control" name="tech" id="tech"
-                            aria-describedby="helpTitle" value="{{ old('public_link') ? old('public_link') : $project->public_link }}">
+                        <input type="text" class="form-control" name="public_link" id="public_link"
+                            aria-describedby="helpPubliLink" value="{{ old('public_link') ? old('public_link') : $project->public_link }}">
 
                         @error('tech')
                             <div class="text-danger">{{ $message }}</div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreProjectRequest extends FormRequest
@@ -22,12 +23,13 @@ class StoreProjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|bail|min:3|max:200',
-            'thumb' => 'nullable|image|max:300',
-            'description' => 'nullable|bail|min:3|max:500',
-            'type' => 'nullable|bail|min:3|max:100',
-            'github_link' => 'nullable|bail|min:3|max:300',
-            'public_link' => 'nullable|bail|min:3|max:300',
+            'title' => ['required', 'string', 'min:3', 'max:80', Rule::unique('projects')],
+            'thumb' => ['nullable', 'image', 'max:1024'],
+            'description' => ['nullable', 'string', 'max:300'],
+            'type' => ['nullable', 'string', 'max:100'],
+            'release_date' => ['nullable', 'string', 'max:100'],
+            'github_link' => ['nullable', 'string', 'max:255', Rule::unique('projects')],
+            'public_link' => ['nullable', 'string', 'max:255', Rule::unique('projects')],
         ];
     }
 }
