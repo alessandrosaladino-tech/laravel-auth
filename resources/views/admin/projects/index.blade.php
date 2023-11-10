@@ -68,10 +68,10 @@
                                         </svg></a>
 
                                 </td>
-                                <td class="align-middle gap-6">
-                                    <div class="col d-flex align-items-center flex-column">
+                                <td class="align-middle">
+                                    <div class="col d-flex align-items-center justify-content-center gap-2">
                                         <a href="{{ route('admin.projects.edit', $project->slug) }}"
-                                            style="height: 20px; width:20px" class="btn btn-outline-success btn-sm d-flex">
+                                            style="height: 40px; width:40px" class="btn btn-outline-success  d-flex">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="" viewBox="0 0 512 512">
                                                 <style>
                                                     svg {
@@ -83,7 +83,7 @@
                                             </svg>
                                         </a>
                                         <a href="{{ route('admin.projects.show', $project->slug) }}"
-                                            style="height: 20px; width:20px" class="btn btn-outline-warning btn-sm d-flex">
+                                            style="height: 40px; width:40px" class="btn btn-outline-warning btn-sm d-flex">
                                             <svg xmlns="http://www.w3.org/2000/svg" style="" viewBox="0 0 512 512">
                                                 <style>
                                                     svg {
@@ -97,10 +97,10 @@
 
 
                                         <!-- Modal trigger button -->
-                                        <button type="button" style="height: 20px; width:20px"
-                                            class="btn btn-outline-danger btn-sm d-flex" data-bs-toggle="modal"
+                                        <button type="button" style="height: 40px; width:40px"
+                                            class="btn btn-outline-danger btn-sm d-flex p-2" data-bs-toggle="modal"
                                             data-bs-target="#modalId-{{ $project->id }}">
-                                            <svg xmlns="http://www.w3.org/2000/svg" height="0.625em" viewBox="0 0 448 512">
+                                            <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 512 512">
                                                 <style>
                                                     svg {
                                                         fill: #000000
