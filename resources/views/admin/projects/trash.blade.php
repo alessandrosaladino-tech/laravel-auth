@@ -13,7 +13,7 @@
 
 
     <div class="py-2">
-        <a class="text-decoration-none btn btn-primary" href="{{ route('admin.projects.index') }}">
+        <a class="text-decoration-none btn btn-outline-danger" href="{{ route('admin.projects.index') }}">
             <i class="fa-solid fa-left-long"></i>
         </a>
     </div>

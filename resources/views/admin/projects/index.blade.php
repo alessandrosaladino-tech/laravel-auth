@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="container">
-        <h2 class="fs-4 text-secondary my-4">
+        <h1 class="fs-4 text-secondary my-4">
             {{ __('Project List for') }} {{ Auth::user()->name }}
-        </h2>
+        </h1>
 
         @if (session('status'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -13,7 +13,7 @@
             </div>
         @endif
 
-        <a href="{{ route('admin.projects.create') }}" class="btn btn-primary my-3">Add a New Project</a>
+        <a href="{{ route('admin.projects.create') }}" class="btn btn-outline-danger my-3">Add a New Project</a>
 
         <div class="pt-4"> {{$projects->links('pagination::bootstrap-5')}} </div>
 
