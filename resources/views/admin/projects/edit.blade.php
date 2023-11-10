@@ -80,12 +80,24 @@
 
                     <div class="mb-3">
 
-                        <label for="tech" class="form-label"><strong>Published Project Link</strong></label>
+                        <label for="public_link" class="form-label"><strong>Published Project Link</strong></label>
 
                         <input type="text" class="form-control" name="public_link" id="public_link"
                             aria-describedby="helpPubliLink" value="{{ old('public_link') ? old('public_link') : $project->public_link }}">
 
-                        @error('tech')
+                        @error('public_link')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label for="release_date" class="form-label"><strong>Release Date</strong></label>
+
+                        <input type="text" class="form-control" name="release_date" id="release_date"
+                            aria-describedby="helpPubliLink" value="{{ old('release_date') ? old('release_date') : $project->release_date }}">
+
+                        @error('release_date')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
