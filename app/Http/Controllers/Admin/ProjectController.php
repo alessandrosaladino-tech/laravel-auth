@@ -93,37 +93,47 @@ class ProjectController extends Controller
         return to_route('admin.projects.show', $project->slug)->with('status', 'Well Done, Element Edited Succeffully');
     }
 
-    /**
+       /**
      * Remove the specified resource from storage.
      */
-        public function destroy(Project $project)
-        {
-            if (!is_null($project->exif_thumbnail)) {
-                Storage::delete($project->thumb);
-            }
-            $project->delete();
-    
-            return to_route('admin.projects.index')->with('message', 'Welldone! Project deleted successfully');
+    public function destroy(Project $project)
+    {
+
+        //dd($project->exif_thumbnail);
+        //dd($project->thumb);
+        if (!is_null($project->thumb)) {
+            Storage::delete($project->thumb);
         }
-    
-        public function trashed()
-        {
-            return view('admin.projects.trash', ['trashedProjects' => Project::onlyTrashed()->orderByDesc('id')->paginate(7)]);
-        }
-    
-        public function restoreTrash($slug)
-        {
-            $project = Project::withTrashed()->where('slug', '=', $slug)->first();
-            $project->restore();
-            return to_route('admin.trash')->with('message', 'Well Done! Project restored successfully!');
-        }
-    
-        public function forceDestroy($slug)
-        {
-            $project = Project::withTrashed()->where('slug', '=', $slug)->first();
-    
-            $project->forceDelete();
-    
-            return to_route('admin.trash')->with('message', 'Well Done! Project deleted successfully!');
-        }
+        $project->delete();
+
+        return to_route('admin.projects.index')->with('message', 'Welldone! Project deleted successfully');
     }
+
+    public function trash_projects()
+    {
+        return view('admin.projects.trash', ['trash_project' => Project::onlyTrashed()->orderByDesc('deleted_at')->paginate(10)]);
+    }
+
+
+    public function restore($id)
+    {
+        $project = Project::withTrashed()->find($id);
+        $project->restore();
+
+        return to_route('admin.projects.index')->with('message', 'Welldone! Project restored successfully');
+    }
+
+    public function forceDelete($id)
+    {
+        $project = Project::withTrashed()->find($id);
+
+        //dd($project->thumb);
+        if (!is_null($project->thumb)) {
+            Storage::delete($project->thumb);
+        }
+
+        $project->forceDelete();
+
+        return to_route('admin.trash')->with('message', 'Well Done! Project deleted successfully!');
+    }
+}

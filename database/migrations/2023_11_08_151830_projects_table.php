@@ -17,9 +17,12 @@ return new class extends Migration
             $table->string('slug');
             $table->text('description')->nullable();
             $table->text('thumb')->nullable();
+            $table->string('github_link')->nullable()->unique();
+            $table->string('public_link')->nullable()->unique();
             $table->date('release_date')->nullable();
             $table->string('type', 50)->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

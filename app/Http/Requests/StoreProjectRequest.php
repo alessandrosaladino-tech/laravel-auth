@@ -25,6 +25,9 @@ class StoreProjectRequest extends FormRequest
             'title' => 'required|bail|min:3|max:200',
             'thumb' => 'nullable|image|max:300',
             'description' => 'nullable|bail|min:3|max:500',
+            'type' => 'nullable|bail|min:3|max:100',
+            'github_link' => 'nullable|bail|min:3|max:300',
+            'public_link' => 'nullable|bail|min:3|max:300',
         ];
     }
 }

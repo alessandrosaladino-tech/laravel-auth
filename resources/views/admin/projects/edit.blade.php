@@ -59,7 +59,31 @@
                         <label for="tech" class="form-label"><strong>Technologies Used</strong></label>
 
                         <input type="text" class="form-control" name="tech" id="tech"
-                            aria-describedby="helpTitle" value="{{ old('tech') ? old('tech') : $project->tech }}">
+                            aria-describedby="helpTitle" value="{{ old('type') ? old('type') : $project->type }}">
+
+                        @error('tech')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label for="tech" class="form-label"><strong>GitHub Link</strong></label>
+
+                        <input type="text" class="form-control" name="tech" id="tech"
+                            aria-describedby="helpTitle" value="{{ old('github_link') ? old('github_link') : $project->github_link }}">
+
+                        @error('tech')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label for="tech" class="form-label"><strong>Published Project Link</strong></label>
+
+                        <input type="text" class="form-control" name="tech" id="tech"
+                            aria-describedby="helpTitle" value="{{ old('public_link') ? old('public_link') : $project->public_link }}">
 
                         @error('tech')
                             <div class="text-danger">{{ $message }}</div>
