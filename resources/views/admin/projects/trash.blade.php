@@ -20,10 +20,10 @@
 
     <div class="pt-4"> {{$trash_project->links('pagination::bootstrap-5')}} </div>
 
-    <table class="table table-primary table-hover table-striped table-bordered">
+    <table class="table table-secondary table-hover table-striped table-bordered">
     
-        <thead>
-            <tr>
+        <thead class="table-group-divider text-center">
+            <tr class="table-danger">
                 <th scope="col">ID</th>
                 <th scope="col">Title</th>
                 <th scope="col">Image</th>

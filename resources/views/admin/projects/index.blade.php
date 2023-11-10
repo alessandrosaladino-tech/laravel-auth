@@ -15,9 +15,10 @@
 
         <a href="{{ route('admin.projects.create') }}" class="btn btn-primary my-3">Add a New Project</a>
 
+        <div class="pt-4"> {{$projects->links('pagination::bootstrap-5')}} </div>
 
         <div class="table-responsive">
-            <table class="table table-bordered table-striped">
+            <table class="table table-secondary table-hover table-striped table-bordered">
                 <thead class="table-group-divider text-center">
                         <tr class="table-danger">
                             <th scope="col">ID</th>
